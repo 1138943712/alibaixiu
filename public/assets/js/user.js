@@ -34,7 +34,8 @@ $('.modifyUser').on('change', '#avatar', function () {
         success: function (response) {
             //reponse就是图片的地址
             $('#preview').attr('src', response[0].avatar);
-            $('#pictureLocation').val(response[0].avatar)
+            $('#pictureLocation').val(response[0].avatar);
+            
         }
     })
 })
