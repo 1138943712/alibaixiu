@@ -1,4 +1,16 @@
 $(function () {
+    $('#password').on('change', function () {
+
+        if ( $('#password').val().trim().length==0 ) {
+            alert('不能为空')
+            $('#btn').attr('disabled', true)
+        } else {
+            $('#btn').attr('disabled', false)
+        }
+
+
+    })
+
     $('#password').on('submit', function () {
         var passwordData = $(this).serialize()
         $.ajax({
