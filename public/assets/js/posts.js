@@ -65,9 +65,15 @@ $('#filtrate').on('submit', function () {
     //阻止表单的默认提交
     return false
 })
-//文章的修改
-//获取文章编辑的事件
-// $('#postBoxs').on('click', '.edit', function () {
-//     var id = $(this).attr('data-id');
-//    
-// })
+//文章的删除
+$('#postBoxs').on('click','.delete',function() {
+   var id =$(this).attr('data-id');
+   //发送ajax的请求
+   $.ajax({
+       type: "delete",
+       url: "/posts/"+id,
+       success: function (response) {
+           location.reload()
+       }
+   });
+})

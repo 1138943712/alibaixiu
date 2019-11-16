@@ -1,5 +1,6 @@
 // 用户路由
 const slide = require('express').Router();
+// console.log(1);
 
 // 添加轮播图片
 slide.post('/', require('./actions/slide/create'));

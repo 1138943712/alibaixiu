@@ -55,16 +55,17 @@ $(function () {
             type: "put",
             url: "/posts/" + id,
             success: function (response) {
-                
+
                 //修改页面的分类的显示
                 $.ajax({
                     type: "get",
                     url: "/categories",
-                    success: function (catalogy) {
-                        console.log(response);                      
-                        response.catalogy = catalogy;
+                    success: function (catalogies) {
+                        console.log(response);
+                        response.catalogies = catalogies;
                         var html = template('modifyTpl', response)
                         console.log(html);
+                        $('.parentBox').html(html)
                     }
                 });
             }
@@ -86,4 +87,23 @@ $(function () {
             return -1
         }
     }
+    //提交修改的内容
+    $('.parentBox').on('submit', '#modifyForm', function () {
+        //获取表单的内容
+        // alert(1)
+        var dataform=$(this).serialize()
+        //获取id
+        var id=$(this).attr('data-id')
+        //发送ajax请求
+        $.ajax({
+            type: "put",
+            url: "/posts/"+id,
+            data: dataform,
+            success: function (response) {
+                location.href='/admin/posts.html'
+            }
+        });
+        //阻止默认提交
+        return false
+    })
 })
